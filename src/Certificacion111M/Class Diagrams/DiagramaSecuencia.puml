@@ -1,0 +1,37 @@
+@startuml
+actor Administrador
+autonumber
+Administrador --> Sistema : RegistrarCampo(nombreCampo.superficie)
+
+Sistema-->Sistema :existeCampo[nombreCampo]()
+
+create Campo
+alt si no existe
+Sistema --> Campo : new(nombreCampo.superficie)
+
+Loop mientras exitan lotes a registrar
+Administrador --> Sistema : RegistrarLote(numero,superficie)
+
+Sistema --> Campo : exiteLote(numero)
+alt si no existe
+create Lote 
+Sistema --> Lote : new(numero,superficie)
+Lote --> Sistema : unLote
+Administrador --> Sistema : getTiposSuelos()
+
+Administrador --> Sistema : asignarTipoSuelo(unTipoSuelo)
+Sistema --> Lote : asignarTipoSuelo(unTipoSuelo)
+
+Campo-->Campo : cacularSuperficieDisponible(superficie)
+alt si hay superficie disponible
+Sistema--> Campo : asignarLote(unLote)
+else no hay superficie disponible
+end
+else el lote ya existe
+end
+end
+Sistema--> Campo : asignarEstado(unEstado:Creado)
+else el nombre ya esta registrado
+end
+
+@enduml

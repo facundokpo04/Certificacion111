@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Administracion de Campos">
+  <ClassDiagramComponents>
+    <Class name="GestorCampos" package="" visibility="public" xPosition="54.0" yPosition="97.0">
+      <Fields>
+        <Field name="razonSocial" type="String" visibility="private"/>
+        <Field name="cuit" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="registrarTipoSuelo" returnType="Boolean" visibility="public">
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="descripcion"/>
+        </Method>
+        <Method name="registrarEstadoCampo" returnType="Boolean" visibility="public">
+          <Argument type="String" name="Nombre"/>
+          <Argument type="String" name="Descripcion"/>
+        </Method>
+        <Method name="registrarCampo" returnType="Bolean" visibility="public">
+          <Argument type="String" name="Nombre"/>
+          <Argument type="Float" name="superficieHa"/>
+        </Method>
+        <Method name="registrarLote" returnType="Boolean" visibility="public">
+          <Argument type="Integer" name="numero"/>
+          <Argument type="Float" name="Superficie"/>
+        </Method>
+        <Method name="existeCampo" returnType="Boolean" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="TipoSuelo" package="" visibility="public" xPosition="577.0" yPosition="145.0">
+      <Fields>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="descripcion" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Campo" package="" visibility="public" xPosition="233.0" yPosition="492.0">
+      <Fields>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="superficie" type="float" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="asignarLote" returnType="Boolean" visibility="public">
+          <Argument type="Lote" name="unLote"/>
+        </Method>
+        <Method name="calcularSuperficieDisponible" returnType="Float" visibility="public">
+          <Argument type="Float" name="superficie"/>
+        </Method>
+        <Method name="asignarEstado" returnType="Boolean" visibility="public">
+          <Argument type="EstadoCampo" name="estado"/>
+        </Method>
+        <Method name="existeLote" returnType="Boolean" visibility="public">
+          <Argument type="Integer" name="numero"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Lote" package="" visibility="public" xPosition="673.0" yPosition="521.0">
+      <Fields>
+        <Field name="numero" type="Integer" visibility="private"/>
+        <Field name="superficie" type="Float" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="asignarTipoSuelo" returnType="Boolean" visibility="public">
+          <Argument type="TipoSuelo" name="unTipoSuelo"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="EstadoCampo" package="" visibility="public" xPosition="9.0" yPosition="521.0">
+      <Fields>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="descripcion" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="lotes" source="GestorCampos" target="Lote" type="Default" sourceCardinality="0..1" targetCardinality="0..*" collectionType="List"/>
+    <HasRelation name="Estado" source="Campo" target="EstadoCampo" type="Default" sourceCardinality="0..1" targetCardinality="0..1"/>
+    <HasRelation name="TiposSuelos" source="GestorCampos" target="TipoSuelo" type="Default" sourceCardinality="0..1" targetCardinality="0..*" collectionType="List"/>
+    <HasRelation name="tipoSuelo" source="Lote" target="TipoSuelo" type="Default" sourceCardinality="0..1" targetCardinality="0..1"/>
+    <HasRelation name="EstadosCampos" source="GestorCampos" target="EstadoCampo" type="Default" sourceCardinality="0..1" targetCardinality="0..*" collectionType="List"/>
+    <HasRelation name="lotes" source="Campo" target="Lote" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="campos" source="GestorCampos" target="Campo" type="Default" sourceCardinality="0..1" targetCardinality="0..*" collectionType="List"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

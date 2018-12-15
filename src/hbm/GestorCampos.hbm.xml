@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="Logica.GestorCampos" table="GestorCampo" >
+        <id name="cuit" column="cuit">
+            <generator class="assigned" />
+        </id>
+        <property name="razonSocial"/>
+        <list name="lotes" cascade="all"> 
+            <key>
+                <column name="idGestor"  />
+            </key>  
+            <list-index>
+                <column name="Idx" />
+            </list-index>
+            <one-to-many class="Logica.Lote" /> 
+        </list>
+        <list name="campos" cascade="all"> 
+            <key>
+                <column name="idGestor"  />
+            </key>  
+            <list-index>
+                <column name="Idx" />
+            </list-index>
+            <one-to-many class="Logica.Campo" /> 
+        </list>
+    
+        <list name="estadosCampo" cascade="all"> 
+            <key>
+                <column name="idGestor"  />
+            </key>  
+            <list-index>
+                <column name="Idx" />
+            </list-index> 
+            <one-to-many class="Logica.EstadoCampo" /> 
+        </list>
+        <list name="tiposSuelo" cascade="all"> 
+            <key>
+                <column name="idGestor"  />
+            </key>  
+            <list-index>
+                <column name="Idx" />
+            </list-index>
+            <one-to-many class="Logica.TipoSuelo" /> 
+        </list>       
+    </class>
+</hibernate-mapping>

@@ -8,6 +8,14 @@ public class EstadoCampo {
 
     private String descripcion;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public EstadoCampo(String nombre, String descripcion) {
         this.nombre = nombre;
         this.descripcion = descripcion;

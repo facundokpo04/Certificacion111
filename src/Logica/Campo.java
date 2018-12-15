@@ -11,6 +11,18 @@ public class Campo {
     private EstadoCampo estado;
     private List<Lote> lotes;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setLotes(List<Lote> lotes) {
+        this.lotes = lotes;
+    }
+
     public Campo(String nombre, float superficie) {
         this.nombre = nombre;
         this.superficie = superficie;

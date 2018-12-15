@@ -22,6 +22,22 @@ public class GestorCampos {
         this.tiposSuelo = new LinkedList<TipoSuelo>();
     }
 
+    public void setLotes(List<Lote> lotes) {
+        this.lotes = lotes;
+    }
+
+    public void setCampos(List<Campo> campos) {
+        this.campos = campos;
+    }
+
+    public void setEstadosCampo(List<EstadoCampo> estadosCampo) {
+        this.estadosCampo = estadosCampo;
+    }
+
+    public void setTiposSuelo(List<TipoSuelo> tiposSuelo) {
+        this.tiposSuelo = tiposSuelo;
+    }
+
     public List<Lote> getLotes() {
         return lotes;
     }

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="Logica.Campo" table="Campo" >
+        <id name="id" column="id_campo" type="int">
+            <generator class="increment" />
+        </id>
+        <property name="nombre"/>
+        <property name="superficie" type="java.math.BigDecimal"/>           
+        <many-to-one name="estado" class="Logica.EstadoCampo" column="id_estado_campo" lazy="false" />        
+        <list name="lotes" cascade="all"> 
+            <key>
+                <column name="idcampo"  />
+            </key>  
+            <list-index>
+                <column name="Idx" />
+            </list-index>   
+            <one-to-many class="Logica.Lote" /> 
+        </list>
+    
+    </class>
+</hibernate-mapping>

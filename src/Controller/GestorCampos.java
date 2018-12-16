@@ -155,7 +155,18 @@ public class GestorCampos {
         this.camposDao.actualizar(unCampo);
 
     }
-    
+
+    public Lote buscarLote(Integer numero) {
+
+        List<Lote> l = this.getLotes();
+        for (Lote unLote : l) {
+            if (unLote.getNumero().equals(numero)) {
+                return unLote;
+            }
+        }
+        return null;
+    }
+
     public Boolean existeCampo(String nombre) {
         boolean existe = false;
         List<Campo> l = this.getCampos();
@@ -165,5 +176,9 @@ public class GestorCampos {
             }
         }
         return existe;
+    }
+
+    public void atualizarLote(Lote unLote) {
+       this.lotesDao.actualizar(unLote);
     }
 }

@@ -37,4 +37,12 @@ public class LotesDaoHibernateImpl {
         session.getTransaction().commit();
         session.close();
     }
+
+    public void actualizar(Lote unLote) {
+          Session session = this.sessionFactory.openSession();
+        session.beginTransaction();
+        session.update(unLote);
+        session.getTransaction().commit();
+        session.close();
+    }
 }

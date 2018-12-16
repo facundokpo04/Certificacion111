@@ -13,8 +13,10 @@ import ModeloTables.ModeloTablaLotes;
 import java.awt.Component;
 import java.text.NumberFormat;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -32,6 +34,7 @@ public class RegistrarCampo extends javax.swing.JFrame {
     private List<Lote> lotes;
     private Campo miCampo;
     ModeloTablaLotes miModTabLotes;
+    private boolean editable;
     TableRowSorter<TableModel> elqueOrdena;
 
     /**
@@ -48,6 +51,7 @@ public class RegistrarCampo extends javax.swing.JFrame {
         List<TipoSuelo> l = this.miGestor.getTiposSuelo();
         this.miModTabLotes = new ModeloTablaLotes();
         this.elqueOrdena = new TableRowSorter<TableModel>(miModTabLotes);
+        this.editable = false;
 
         initComponents();
 
@@ -443,6 +447,8 @@ public class RegistrarCampo extends javax.swing.JFrame {
             jtxtNroLote.setText(jTableLotes.getValueAt(fila, 0).toString());
             jtxtSupLote.setText(jTableLotes.getValueAt(fila, 1).toString());
             jCbxTiposSuelo.setSelectedItem(jTableLotes.getValueAt(fila, 2));
+            jtxtNroLote.setEnabled(false);
+            this.editable = true;
 
         } else {
 
@@ -502,7 +508,7 @@ public class RegistrarCampo extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAceptar2ActionPerformed
 
     private void btnCancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelar1ActionPerformed
-        if (this.miCampo!=null) {
+        if (this.miCampo != null) {
             try {
                 this.miGestor.removerCampo(miCampo);
                 this.dispose();
@@ -524,22 +530,36 @@ public class RegistrarCampo extends javax.swing.JFrame {
     private void jbtnagrLoteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnagrLoteMouseClicked
 
         Lote unLote = null;
-        int numeroLote = Integer.parseInt(this.jtxtNroLote.getText());
-        float superficie = Float.parseFloat(this.jtxtSupLote.getText());
-        TipoSuelo tipSuelo = (TipoSuelo) this.jCbxTiposSuelo.getSelectedItem();
-        unLote = this.miGestor.registrarLote(numeroLote, superficie);
-        unLote.setTipoSuelo(tipSuelo);
+        TipoSuelo tipSuelo= null;
 
-        try {
-            // TODO add your handling code here:
-
-            this.miGestor.asignarLote(unLote, miCampo);
+        if (this.editable) {
+            unLote = this.miGestor.buscarLote(Integer.parseInt(jtxtNroLote.getText()));
+            unLote.setSuperficie(Float.parseFloat(this.jtxtSupLote.getText()));
+            tipSuelo = (TipoSuelo) this.jCbxTiposSuelo.getSelectedItem();
+            unLote.setTipoSuelo(tipSuelo);           
+            this.miGestor.atualizarLote(unLote);
+            this.editable=false;
+            this.jtxtNroLote.setEnabled(true);
             this.actualizarTabla(this.miCampo.getLotes());
+           
+        } else {
+            int numeroLote = Integer.parseInt(this.jtxtNroLote.getText());
+            float superficie = Float.parseFloat(this.jtxtSupLote.getText());
+            tipSuelo = (TipoSuelo) this.jCbxTiposSuelo.getSelectedItem();
+            unLote = this.miGestor.registrarLote(numeroLote, superficie);
+            unLote.setTipoSuelo(tipSuelo);
 
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage(),
-                    "Información para el usuario",
-                    JOptionPane.WARNING_MESSAGE);
+            try {
+                // TODO add your handling code here:
+
+                this.miGestor.asignarLote(unLote, miCampo);
+                this.actualizarTabla(this.miCampo.getLotes());
+
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage(),
+                        "Información para el usuario",
+                        JOptionPane.WARNING_MESSAGE);
+            }
         }
 
 

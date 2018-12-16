@@ -28,6 +28,14 @@ public class CamposDaoHibernateImpl {
         session.getTransaction().commit();
         session.close();
     }
+    
+      public void Eliminar(Campo campo) {
+        Session session = this.sessionFactory.openSession();
+        session.beginTransaction();
+        session.delete(campo);
+        session.getTransaction().commit();
+        session.close();
+    }
      public void actualizar(Campo campo) {
         Session session = this.sessionFactory.openSession();
         session.beginTransaction();

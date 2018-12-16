@@ -25,7 +25,7 @@ import javax.swing.table.TableRowSorter;
  * @author facundo
  */
 public class RegistrarCampo extends javax.swing.JFrame {
-    
+
     private GestorCampos miGestor;
     private List<Lote> lotes;
     private Campo miCampo;
@@ -36,26 +36,26 @@ public class RegistrarCampo extends javax.swing.JFrame {
      * Creates new form RegistrarCampo
      */
     public RegistrarCampo() {
-        
+
         initComponents();
     }
-    
+
     public RegistrarCampo(GestorCampos unGestor) throws Exception {
         this.miGestor = unGestor;
         this.lotes = new LinkedList<Lote>();
         List<TipoSuelo> l = this.miGestor.getTiposSuelo();
         this.miModTabLotes = new ModeloTablaLotes();
         this.elqueOrdena = new TableRowSorter<TableModel>(miModTabLotes);
-        
+
         initComponents();
-        
+
         this.jTableLotes.setModel(miModTabLotes);
         this.jTableLotes.setRowSorter(this.elqueOrdena);
         this.enablePanel(false);
         for (TipoSuelo untp : l) {
-            
+
             this.jCbxTiposSuelo.addItem(untp);
-            
+
         }
     }
 
@@ -76,6 +76,7 @@ public class RegistrarCampo extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jbtnagrCampo = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
         jPanelLotes = new javax.swing.JPanel();
         jPanelLotes2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -85,6 +86,7 @@ public class RegistrarCampo extends javax.swing.JFrame {
         jtxtSupLote = new javax.swing.JTextField();
         jCbxTiposSuelo = new javax.swing.JComboBox<>();
         jbtnagrLote = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
         jToolBar2 = new javax.swing.JToolBar();
         btnAceptar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
@@ -129,6 +131,8 @@ public class RegistrarCampo extends javax.swing.JFrame {
             }
         });
 
+        jLabel9.setText("Ha");
+
         javax.swing.GroupLayout jPanelCampoLayout = new javax.swing.GroupLayout(jPanelCampo);
         jPanelCampo.setLayout(jPanelCampoLayout);
         jPanelCampoLayout.setHorizontalGroup(
@@ -140,7 +144,7 @@ public class RegistrarCampo extends javax.swing.JFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jtxtNombreCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 209, Short.MAX_VALUE)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -149,6 +153,8 @@ public class RegistrarCampo extends javax.swing.JFrame {
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jtxtSuperficie, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jbtnagrCampo))))
         );
@@ -166,7 +172,8 @@ public class RegistrarCampo extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCampoLayout.createSequentialGroup()
                         .addGroup(jPanelCampoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(jtxtSuperficie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jtxtSuperficie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9))
                         .addGap(19, 19, 19))
                     .addComponent(jbtnagrCampo, javax.swing.GroupLayout.Alignment.TRAILING)))
         );
@@ -197,6 +204,8 @@ public class RegistrarCampo extends javax.swing.JFrame {
             }
         });
 
+        jLabel8.setText("Ha");
+
         javax.swing.GroupLayout jPanelLotes2Layout = new javax.swing.GroupLayout(jPanelLotes2);
         jPanelLotes2.setLayout(jPanelLotes2Layout);
         jPanelLotes2Layout.setHorizontalGroup(
@@ -213,7 +222,9 @@ public class RegistrarCampo extends javax.swing.JFrame {
                     .addComponent(jCbxTiposSuelo, 0, 132, Short.MAX_VALUE)
                     .addComponent(jtxtNroLote)
                     .addComponent(jtxtSupLote))
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel8)
+                .addContainerGap(18, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLotes2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jbtnagrLote)
@@ -229,7 +240,8 @@ public class RegistrarCampo extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanelLotes2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jtxtSupLote, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtxtSupLote, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelLotes2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -373,40 +385,39 @@ public class RegistrarCampo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void actualizarTabla(Collection registros) {
-        
+
         jTableLotes.removeAll();
         this.miModTabLotes.recargar(registros);
         jTableLotes.setModel(miModTabLotes);
         jTableLotes.setRowSorter(elqueOrdena);
-        
+
     }
-    
+
     private void enablePanel(Boolean valor) {
-        
+
         for (Component component : jPanelLotes2.getComponents()) {
             component.setEnabled(valor);
         }
         for (Component component : jPanelLotes.getComponents()) {
             component.setEnabled(valor);
         }
-        
+
     }
-    
-    private void limpiarLotes(){
-    
-    this.jtxtNroLote.setText("");
-    this.jtxtSupLote.setText("");
-    this.jCbxTiposSuelo.setSelectedIndex(0);
-    
-    
+
+    private void limpiarLotes() {
+
+        this.jtxtNroLote.setText("");
+        this.jtxtSupLote.setText("");
+        this.jCbxTiposSuelo.setSelectedIndex(0);
+
     }
-    
+
     private void enablePanelCampos(Boolean valor) {
-        
+
         for (Component component : jPanelCampo.getComponents()) {
             component.setEnabled(valor);
         }
-        
+
     }
 
     private void jtxtNombreCampoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtNombreCampoActionPerformed
@@ -419,37 +430,33 @@ public class RegistrarCampo extends javax.swing.JFrame {
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
 
-        int fila=this.jTableLotes.getSelectedRow();
-           if(fila!=-1){    
-             jtxtNroLote.setText(jTableLotes.getValueAt(fila, 0).toString());
-              jtxtSupLote.setText(jTableLotes.getValueAt(fila, 1).toString());
-              jCbxTiposSuelo.setSelectedItem(jTableLotes.getValueAt(fila, 2));
-              
-               
-           }
-           else{
-                
-               JOptionPane.showMessageDialog(null,"Debe Seleccionar un Lote de la Tabla",
-                   "Información para el usuario",
-                   JOptionPane.WARNING_MESSAGE);
-           
-           
-           }
+        int fila = this.jTableLotes.getSelectedRow();
+        if (fila != -1) {
+            jtxtNroLote.setText(jTableLotes.getValueAt(fila, 0).toString());
+            jtxtSupLote.setText(jTableLotes.getValueAt(fila, 1).toString());
+            jCbxTiposSuelo.setSelectedItem(jTableLotes.getValueAt(fila, 2));
+
+        } else {
+
+            JOptionPane.showMessageDialog(null, "Debe Seleccionar un Lote de la Tabla",
+                    "Información para el usuario",
+                    JOptionPane.WARNING_MESSAGE);
+
+        }
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         int fila = jTableLotes.getSelectedRow();
         if (fila != -1) {
-            
-            Integer nroLote =Integer.parseInt(jTableLotes.getValueAt(fila, 0).toString());
+
+            Integer nroLote = Integer.parseInt(jTableLotes.getValueAt(fila, 0).toString());
             Lote unLote = this.miCampo.obtenerLote(nroLote);
-            
+
             try {
                 this.miCampo.removerLote(unLote);
                 this.actualizarTabla(this.miCampo.getLotes());
                 this.limpiarLotes();
-               
-                
+
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, ex.getMessage(),
                         "Información para el usuario",
@@ -459,6 +466,23 @@ public class RegistrarCampo extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnAceptar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptar2ActionPerformed
+        int registrarCampo = JOptionPane.showConfirmDialog(null, "¿Confirma el registro del Campo?", "Confirmación", JOptionPane.YES_OPTION);
+        if (this.miCampo.getLotes().size() > 0) {
+            if (registrarCampo == JOptionPane.YES_OPTION) {
+                // mostramos la ventana de confirmacion de impresion
+                new CampoRegistrado(this.miCampo).setVisible(true);
+                this.dispose();
+            } else {
+                this.dispose();
+
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe registrar al menos un lote",
+                    "Información para el usuario",
+                    JOptionPane.WARNING_MESSAGE);
+        }
+
 
     }//GEN-LAST:event_btnAceptar2ActionPerformed
 
@@ -471,26 +495,26 @@ public class RegistrarCampo extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtnagrLoteActionPerformed
 
     private void jbtnagrLoteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnagrLoteMouseClicked
-        
+
         Lote unLote = null;
         int numeroLote = Integer.parseInt(this.jtxtNroLote.getText());
         float superficie = Float.parseFloat(this.jtxtSupLote.getText());
         TipoSuelo tipSuelo = (TipoSuelo) this.jCbxTiposSuelo.getSelectedItem();
         unLote = this.miGestor.registrarLote(numeroLote, superficie);
         unLote.setTipoSuelo(tipSuelo);
-        
+
         try {
             // TODO add your handling code here:
 
             this.miGestor.asignarLote(unLote, miCampo);
             this.actualizarTabla(this.miCampo.getLotes());
-            
+
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(),
                     "Información para el usuario",
                     JOptionPane.WARNING_MESSAGE);
         }
-        
+
 
     }//GEN-LAST:event_jbtnagrLoteMouseClicked
 
@@ -501,7 +525,7 @@ public class RegistrarCampo extends javax.swing.JFrame {
             this.miCampo = this.miGestor.registrarCampo(this.jtxtNombreCampo.getText(), Float.parseFloat(this.jtxtSuperficie.getText()));
             this.enablePanel(true);
             this.enablePanelCampos(false);
-            
+
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(),
                     "Información para el usuario",
@@ -515,43 +539,12 @@ public class RegistrarCampo extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtnagrCampoActionPerformed
 
     private void btnAceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAceptarMouseClicked
-      
+
     }//GEN-LAST:event_btnAceptarMouseClicked
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistrarCampo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistrarCampo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistrarCampo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistrarCampo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new RegistrarCampo().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
@@ -566,6 +559,8 @@ public class RegistrarCampo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanelCampo;
     private javax.swing.JPanel jPanelLotes;
     private javax.swing.JPanel jPanelLotes2;

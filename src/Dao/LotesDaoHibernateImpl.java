@@ -29,4 +29,12 @@ public class LotesDaoHibernateImpl {
         session.getTransaction().commit();
         session.close();
     }
+    
+       public void eliminar(Lote lote) {
+        Session session = this.sessionFactory.openSession();
+        session.beginTransaction();
+        session.delete(lote);
+        session.getTransaction().commit();
+        session.close();
+    }
 }

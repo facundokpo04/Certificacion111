@@ -6,7 +6,7 @@
             <generator class="increment" />
         </id>
         <property name="nombre"/>
-        <property name="superficie" type="java.math.BigDecimal"/>           
+        <property name="superficie" type="float"/>           
         <many-to-one name="estado" class="Logica.EstadoCampo" column="id_estado_campo" lazy="false" />        
         <list name="lotes" cascade="all"> 
             <key>

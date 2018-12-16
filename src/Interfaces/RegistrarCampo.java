@@ -6,7 +6,7 @@
 package Interfaces;
 
 import Logica.Campo;
-import Logica.GestorCampos;
+import Controller.GestorCampos;
 import Logica.Lote;
 import Logica.TipoSuelo;
 import ModeloTables.ModeloTablaLotes;
@@ -307,15 +307,14 @@ public class RegistrarCampo extends javax.swing.JFrame {
         jPanelLotesLayout.setVerticalGroup(
             jPanelLotesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelLotesLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanelLotesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelLotesLayout.createSequentialGroup()
-                        .addGap(8, 8, 8)
+                        .addGap(19, 19, 19)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
-                        .addComponent(jToolBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addComponent(jPanelLotes2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jToolBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanelLotes2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         btnAceptar2.setText("<html><center>Confirmar<html><center>Cambios</");
@@ -355,8 +354,7 @@ public class RegistrarCampo extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnCancelar1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jPanelLotes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -484,7 +482,7 @@ public class RegistrarCampo extends javax.swing.JFrame {
         try {
             // TODO add your handling code here:
 
-            this.miCampo.asignarLote(unLote);
+            this.miGestor.asignarLote(unLote, miCampo);
             this.actualizarTabla(this.miCampo.getLotes());
             
         } catch (Exception ex) {

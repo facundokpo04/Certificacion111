@@ -6,7 +6,7 @@
             <generator class="increment" />
         </id>
         <property name="numero"  column="numero_lote"/>
-        <property name="superficie" type="java.math.BigDecimal"/>
+        <property name="superficie" type="float"/>
         <many-to-one name="tipoSuelo" class="Logica.TipoSuelo" column="id_tiposuelo" lazy="false"/>           
     </class>
 </hibernate-mapping>

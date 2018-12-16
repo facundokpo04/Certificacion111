@@ -22,6 +22,8 @@ Administrador --> Sistema : getTiposSuelos()
 Administrador --> Sistema : asignarTipoSuelo(unTipoSuelo)
 Sistema --> Lote : asignarTipoSuelo(unTipoSuelo)
 
+
+Administrador --> Sistema : asignarUnLote(unLote,unCampo)
 Campo-->Campo : cacularSuperficieDisponible(superficie)
 alt si hay superficie disponible
 Sistema--> Campo : asignarLote(unLote)

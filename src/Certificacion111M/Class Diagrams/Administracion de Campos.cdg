@@ -28,6 +28,10 @@
         <Method name="existeCampo" returnType="Boolean" visibility="public">
           <Argument type="String" name="nombre"/>
         </Method>
+        <Method name="asignarLote" returnType="void" visibility="public">
+          <Argument type="Lote" name="unLote"/>
+          <Argument type="Campo" name="unCampo"/>
+        </Method>
       </Methods>
     </Class>
     <Class name="TipoSuelo" package="" visibility="public" xPosition="577.0" yPosition="145.0">
@@ -81,12 +85,12 @@
     </Class>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <HasRelation name="lotes" source="GestorCampos" target="Lote" type="Default" sourceCardinality="0..1" targetCardinality="0..*" collectionType="List"/>
-    <HasRelation name="Estado" source="Campo" target="EstadoCampo" type="Default" sourceCardinality="0..1" targetCardinality="0..1"/>
-    <HasRelation name="TiposSuelos" source="GestorCampos" target="TipoSuelo" type="Default" sourceCardinality="0..1" targetCardinality="0..*" collectionType="List"/>
-    <HasRelation name="tipoSuelo" source="Lote" target="TipoSuelo" type="Default" sourceCardinality="0..1" targetCardinality="0..1"/>
     <HasRelation name="EstadosCampos" source="GestorCampos" target="EstadoCampo" type="Default" sourceCardinality="0..1" targetCardinality="0..*" collectionType="List"/>
+    <HasRelation name="tipoSuelo" source="Lote" target="TipoSuelo" type="Default" sourceCardinality="0..1" targetCardinality="0..1"/>
+    <HasRelation name="lotes" source="GestorCampos" target="Lote" type="Default" sourceCardinality="0..1" targetCardinality="0..*" collectionType="List"/>
     <HasRelation name="lotes" source="Campo" target="Lote" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="TiposSuelos" source="GestorCampos" target="TipoSuelo" type="Default" sourceCardinality="0..1" targetCardinality="0..*" collectionType="List"/>
     <HasRelation name="campos" source="GestorCampos" target="Campo" type="Default" sourceCardinality="0..1" targetCardinality="0..*" collectionType="List"/>
+    <HasRelation name="Estado" source="Campo" target="EstadoCampo" type="Default" sourceCardinality="0..1" targetCardinality="0..1"/>
   </ClassDiagramRelations>
 </ClassDiagram>

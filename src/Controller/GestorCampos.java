@@ -92,7 +92,7 @@ public class GestorCampos {
     public TipoSuelo registrarTipoSuelo(String nombre, String descripcion) {
         TipoSuelo unTipoSuelo = new TipoSuelo(nombre, descripcion);
         this.tiposSuelo.add(unTipoSuelo);
-         this.tsDao.guardar(unTipoSuelo);
+        this.tsDao.guardar(unTipoSuelo);
         return unTipoSuelo;
     }
 
@@ -122,6 +122,26 @@ public class GestorCampos {
         return unLote;
     }
 
+    public void removerCampo(Campo unCampo) throws Exception {
+        try {
+            this.campos.remove(unCampo);
+            this.camposDao.Eliminar(unCampo);
+
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    public void removerLote(Lote unLote) throws Exception {
+        try {
+            this.campos.remove(unLote);
+            this.lotesDao.eliminar(unLote);
+
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
     public void asignarLote(Lote unLote, Campo unCampo) throws Exception {
 
         unCampo.asignarLote(unLote);
@@ -129,6 +149,13 @@ public class GestorCampos {
 
     }
 
+    public void quitarLote(Lote unLote, Campo unCampo) throws Exception {
+
+        unCampo.removerLote(unLote);
+        this.camposDao.actualizar(unCampo);
+
+    }
+    
     public Boolean existeCampo(String nombre) {
         boolean existe = false;
         List<Campo> l = this.getCampos();

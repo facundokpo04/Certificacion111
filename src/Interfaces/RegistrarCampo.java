@@ -11,6 +11,7 @@ import Logica.Lote;
 import Logica.TipoSuelo;
 import ModeloTables.ModeloTablaLotes;
 import java.awt.Component;
+import java.text.NumberFormat;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
@@ -19,6 +20,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+import javax.swing.text.NumberFormatter;
 
 /**
  *
@@ -72,21 +74,21 @@ public class RegistrarCampo extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jtxtNombreCampo = new javax.swing.JTextField();
-        jtxtSuperficie = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jbtnagrCampo = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
+        jtxtSuperficie = new javax.swing.JFormattedTextField();
         jPanelLotes = new javax.swing.JPanel();
         jPanelLotes2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jtxtNroLote = new javax.swing.JTextField();
-        jtxtSupLote = new javax.swing.JTextField();
         jCbxTiposSuelo = new javax.swing.JComboBox<>();
         jbtnagrLote = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
+        jtxtNroLote = new javax.swing.JFormattedTextField();
+        jtxtSupLote = new javax.swing.JFormattedTextField();
         jToolBar2 = new javax.swing.JToolBar();
         btnAceptar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
@@ -109,15 +111,9 @@ public class RegistrarCampo extends javax.swing.JFrame {
             }
         });
 
-        jtxtSuperficie.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtxtSuperficieActionPerformed(evt);
-            }
-        });
-
         jLabel3.setText("Usuario:");
 
-        jLabel4.setText("NancyGanz");
+        jLabel4.setText("FacundoD");
 
         jbtnagrCampo.setText("Guardar Campo");
         jbtnagrCampo.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -133,6 +129,12 @@ public class RegistrarCampo extends javax.swing.JFrame {
 
         jLabel9.setText("Ha");
 
+        jtxtSuperficie.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtxtSuperficieKeyTyped(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelCampoLayout = new javax.swing.GroupLayout(jPanelCampo);
         jPanelCampo.setLayout(jPanelCampoLayout);
         jPanelCampoLayout.setHorizontalGroup(
@@ -144,7 +146,7 @@ public class RegistrarCampo extends javax.swing.JFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jtxtNombreCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 209, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -152,7 +154,7 @@ public class RegistrarCampo extends javax.swing.JFrame {
                     .addGroup(jPanelCampoLayout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jtxtSuperficie, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtxtSuperficie, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -167,13 +169,13 @@ public class RegistrarCampo extends javax.swing.JFrame {
                     .addComponent(jtxtNombreCampo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(jPanelCampoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCampoLayout.createSequentialGroup()
                         .addGroup(jPanelCampoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(jtxtSuperficie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9))
+                            .addComponent(jLabel9)
+                            .addComponent(jtxtSuperficie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(19, 19, 19))
                     .addComponent(jbtnagrCampo, javax.swing.GroupLayout.Alignment.TRAILING)))
         );
@@ -206,6 +208,18 @@ public class RegistrarCampo extends javax.swing.JFrame {
 
         jLabel8.setText("Ha");
 
+        jtxtNroLote.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtxtNroLoteKeyTyped(evt);
+            }
+        });
+
+        jtxtSupLote.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtxtSupLoteKeyTyped(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelLotes2Layout = new javax.swing.GroupLayout(jPanelLotes2);
         jPanelLotes2.setLayout(jPanelLotes2Layout);
         jPanelLotes2Layout.setHorizontalGroup(
@@ -218,13 +232,13 @@ public class RegistrarCampo extends javax.swing.JFrame {
                         .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE))
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelLotes2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanelLotes2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jCbxTiposSuelo, 0, 132, Short.MAX_VALUE)
                     .addComponent(jtxtNroLote)
                     .addComponent(jtxtSupLote))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addGap(18, 18, 18))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLotes2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jbtnagrLote)
@@ -233,20 +247,20 @@ public class RegistrarCampo extends javax.swing.JFrame {
         jPanelLotes2Layout.setVerticalGroup(
             jPanelLotes2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelLotes2Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(jPanelLotes2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(14, 14, 14)
+                .addGroup(jPanelLotes2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel5)
                     .addComponent(jtxtNroLote, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelLotes2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jtxtSupLote, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
+                    .addComponent(jLabel8)
+                    .addComponent(jtxtSupLote, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelLotes2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jCbxTiposSuelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
                 .addComponent(jbtnagrLote)
                 .addContainerGap())
         );
@@ -323,7 +337,7 @@ public class RegistrarCampo extends javax.swing.JFrame {
                     .addGroup(jPanelLotesLayout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                         .addComponent(jToolBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanelLotes2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -357,16 +371,14 @@ public class RegistrarCampo extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanelCampo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jPanelCampo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnAceptar2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnCancelar1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jPanelLotes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addComponent(btnAceptar2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnCancelar1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanelLotes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 21, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -424,10 +436,6 @@ public class RegistrarCampo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtxtNombreCampoActionPerformed
 
-    private void jtxtSuperficieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtSuperficieActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtxtSuperficieActionPerformed
-
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
 
         int fila = this.jTableLotes.getSelectedRow();
@@ -453,7 +461,7 @@ public class RegistrarCampo extends javax.swing.JFrame {
             Lote unLote = this.miCampo.obtenerLote(nroLote);
 
             try {
-                this.miCampo.removerLote(unLote);
+                this.miGestor.quitarLote(unLote, miCampo);
                 this.actualizarTabla(this.miCampo.getLotes());
                 this.limpiarLotes();
 
@@ -473,6 +481,13 @@ public class RegistrarCampo extends javax.swing.JFrame {
                 new CampoRegistrado(this.miCampo).setVisible(true);
                 this.dispose();
             } else {
+                try {
+                    this.miGestor.removerCampo(miCampo);
+                } catch (Exception ex) {
+                       JOptionPane.showMessageDialog(null, ex.getMessage(),
+                        "Información para el usuario",
+                        JOptionPane.WARNING_MESSAGE);
+                }
                 this.dispose();
 
             }
@@ -487,7 +502,16 @@ public class RegistrarCampo extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAceptar2ActionPerformed
 
     private void btnCancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelar1ActionPerformed
-        this.dispose();
+
+        try {
+            this.miGestor.removerCampo(miCampo);
+            this.dispose();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Debe registrar al menos un lote",
+                    "Información para el usuario",
+                    JOptionPane.WARNING_MESSAGE);
+        }
+
     }//GEN-LAST:event_btnCancelar1ActionPerformed
 
     private void jbtnagrLoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnagrLoteActionPerformed
@@ -542,6 +566,34 @@ public class RegistrarCampo extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnAceptarMouseClicked
 
+    private void jtxtSuperficieKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtSuperficieKeyTyped
+        // TODO add your handling code here:
+        char car = evt.getKeyChar();
+        if ((car < '0' || car > '9')) {
+            if ((car != '-') && (car != '+')) {
+                evt.consume();
+            }
+        }
+    }//GEN-LAST:event_jtxtSuperficieKeyTyped
+
+    private void jtxtNroLoteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtNroLoteKeyTyped
+        char car = evt.getKeyChar();
+        if ((car < '0' || car > '9')) {
+            if ((car != '-') && (car != '+')) {
+                evt.consume();
+            }
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_jtxtNroLoteKeyTyped
+
+    private void jtxtSupLoteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtSupLoteKeyTyped
+        char car = evt.getKeyChar();
+        if ((car < '0' || car > '9')) {
+            if ((car != '-') && (car != '+')) {
+                evt.consume();
+            }
+        }         // TODO add your handling code here:
+    }//GEN-LAST:event_jtxtSupLoteKeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -570,8 +622,8 @@ public class RegistrarCampo extends javax.swing.JFrame {
     private javax.swing.JButton jbtnagrCampo;
     private javax.swing.JButton jbtnagrLote;
     private javax.swing.JTextField jtxtNombreCampo;
-    private javax.swing.JTextField jtxtNroLote;
-    private javax.swing.JTextField jtxtSupLote;
-    private javax.swing.JTextField jtxtSuperficie;
+    private javax.swing.JFormattedTextField jtxtNroLote;
+    private javax.swing.JFormattedTextField jtxtSupLote;
+    private javax.swing.JFormattedTextField jtxtSuperficie;
     // End of variables declaration//GEN-END:variables
 }

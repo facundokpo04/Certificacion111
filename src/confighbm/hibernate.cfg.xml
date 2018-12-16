@@ -6,11 +6,11 @@
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/dbcampos?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">root</property>
-    <property name="hibernate.connection.password"></property>
+    <property name="hibernate.connection.password"/>
     <property name="connection.pool_size">1</property>
     <property name="hibernate.show_sql">true</property>
     <property name="hibernate.connection.autocommit">true</property>
-      <mapping resource="hbm/Lote.hbm.xml"/>
+    <mapping resource="hbm/Lote.hbm.xml"/>
     <mapping resource="hbm/Campo.hbm.xml"/>
     <mapping resource="hbm/EstadoCampo.hbm.xml"/>
     <mapping resource="hbm/GestorCampos.hbm.xml"/>

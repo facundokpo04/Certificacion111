@@ -484,9 +484,9 @@ public class RegistrarCampo extends javax.swing.JFrame {
                 try {
                     this.miGestor.removerCampo(miCampo);
                 } catch (Exception ex) {
-                       JOptionPane.showMessageDialog(null, ex.getMessage(),
-                        "Información para el usuario",
-                        JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(),
+                            "Información para el usuario",
+                            JOptionPane.WARNING_MESSAGE);
                 }
                 this.dispose();
 
@@ -502,14 +502,17 @@ public class RegistrarCampo extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAceptar2ActionPerformed
 
     private void btnCancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelar1ActionPerformed
-
-        try {
-            this.miGestor.removerCampo(miCampo);
+        if (this.miCampo!=null) {
+            try {
+                this.miGestor.removerCampo(miCampo);
+                this.dispose();
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "Debe registrar al menos un lote",
+                        "Información para el usuario",
+                        JOptionPane.WARNING_MESSAGE);
+            }
+        } else {
             this.dispose();
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Debe registrar al menos un lote",
-                    "Información para el usuario",
-                    JOptionPane.WARNING_MESSAGE);
         }
 
     }//GEN-LAST:event_btnCancelar1ActionPerformed

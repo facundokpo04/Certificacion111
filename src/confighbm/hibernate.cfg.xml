@@ -9,7 +9,6 @@
     <property name="hibernate.connection.password"></property>
     <property name="connection.pool_size">1</property>
     <property name="hibernate.show_sql">true</property>
-    <property name="hbm2ddl.auto">create-drop</property>
     <property name="hibernate.connection.autocommit">true</property>
       <mapping resource="hbm/Lote.hbm.xml"/>
     <mapping resource="hbm/Campo.hbm.xml"/>

@@ -24,7 +24,7 @@ public class CampoRegistrado extends javax.swing.JFrame {
         this.miCampo = unCampo;
         this.miModTabLotes = new ModeloTablaLotes();
         initComponents();
-        this.jLblCampo.setText("El campo " + this.miCampo.getNombre() + " de " + String.valueOf(this.miCampo.getSuperficie()) + "ha ha sido registrado:");
+        this.jLblCampo.setText("El campo " + this.miCampo.getNombre() + " de " + String.valueOf(this.miCampo.getSuperficie()) + " HA ha sido registrado:");
         this.jTableLotes.setModel(miModTabLotes);
         this.miModTabLotes.recargar(this.miCampo.getLotes());
 

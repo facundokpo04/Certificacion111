@@ -9,19 +9,19 @@
       </Fields>
       <Constructors/>
       <Methods>
-        <Method name="registrarTipoSuelo" returnType="Boolean" visibility="public">
+        <Method name="registrarTipoSuelo" returnType="TipoSuelo" visibility="public">
           <Argument type="String" name="nombre"/>
           <Argument type="String" name="descripcion"/>
         </Method>
-        <Method name="registrarEstadoCampo" returnType="Boolean" visibility="public">
+        <Method name="registrarEstadoCampo" returnType="EstadoCampo" visibility="public">
           <Argument type="String" name="Nombre"/>
           <Argument type="String" name="Descripcion"/>
         </Method>
-        <Method name="registrarCampo" returnType="Bolean" visibility="public">
+        <Method name="registrarCampo" returnType="Campo" visibility="public">
           <Argument type="String" name="Nombre"/>
           <Argument type="Float" name="superficieHa"/>
         </Method>
-        <Method name="registrarLote" returnType="Boolean" visibility="public">
+        <Method name="registrarLote" returnType="Lote" visibility="public">
           <Argument type="Integer" name="numero"/>
           <Argument type="Float" name="Superficie"/>
         </Method>
@@ -31,6 +31,13 @@
         <Method name="asignarLote" returnType="void" visibility="public">
           <Argument type="Lote" name="unLote"/>
           <Argument type="Campo" name="unCampo"/>
+        </Method>
+        <Method name="quitarLote" returnType="void" visibility="public">
+          <Argument type="Lote" name="unLote"/>
+          <Argument type="Campo" name="unCampo"/>
+        </Method>
+        <Method name="buscarLote" returnType="Lote" visibility="public">
+          <Argument type="Integer" name="numero"/>
         </Method>
       </Methods>
     </Class>
@@ -52,13 +59,13 @@
         <Method name="asignarLote" returnType="Boolean" visibility="public">
           <Argument type="Lote" name="unLote"/>
         </Method>
-        <Method name="calcularSuperficieDisponible" returnType="Float" visibility="public">
+        <Method name="calcularSuperficieDisponible" returnType="Boolean" visibility="public">
           <Argument type="Float" name="superficie"/>
         </Method>
-        <Method name="asignarEstado" returnType="Boolean" visibility="public">
-          <Argument type="EstadoCampo" name="estado"/>
-        </Method>
         <Method name="existeLote" returnType="Boolean" visibility="public">
+          <Argument type="Integer" name="numero"/>
+        </Method>
+        <Method name="obtenerLote" returnType="Lote" visibility="public">
           <Argument type="Integer" name="numero"/>
         </Method>
       </Methods>
@@ -85,12 +92,12 @@
     </Class>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <HasRelation name="EstadosCampos" source="GestorCampos" target="EstadoCampo" type="Default" sourceCardinality="0..1" targetCardinality="0..*" collectionType="List"/>
+    <HasRelation name="campos" source="GestorCampos" target="Campo" type="Default" sourceCardinality="0..1" targetCardinality="0..*" collectionType="List"/>
     <HasRelation name="tipoSuelo" source="Lote" target="TipoSuelo" type="Default" sourceCardinality="0..1" targetCardinality="0..1"/>
+    <HasRelation name="EstadosCampos" source="GestorCampos" target="EstadoCampo" type="Default" sourceCardinality="0..1" targetCardinality="0..*" collectionType="List"/>
+    <HasRelation name="TiposSuelos" source="GestorCampos" target="TipoSuelo" type="Default" sourceCardinality="0..1" targetCardinality="0..*" collectionType="List"/>
     <HasRelation name="lotes" source="GestorCampos" target="Lote" type="Default" sourceCardinality="0..1" targetCardinality="0..*" collectionType="List"/>
     <HasRelation name="lotes" source="Campo" target="Lote" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
-    <HasRelation name="TiposSuelos" source="GestorCampos" target="TipoSuelo" type="Default" sourceCardinality="0..1" targetCardinality="0..*" collectionType="List"/>
-    <HasRelation name="campos" source="GestorCampos" target="Campo" type="Default" sourceCardinality="0..1" targetCardinality="0..*" collectionType="List"/>
     <HasRelation name="Estado" source="Campo" target="EstadoCampo" type="Default" sourceCardinality="0..1" targetCardinality="0..1"/>
   </ClassDiagramRelations>
 </ClassDiagram>
